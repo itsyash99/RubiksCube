@@ -137,6 +137,8 @@ rubiksCube &rubiksCube::invert(MOVE ind){
     }
 }
 
+// print rubiks cube
+
 void rubiksCube::print() const{
 
     cout<<"RUBIK'S CUBE : \n\n";

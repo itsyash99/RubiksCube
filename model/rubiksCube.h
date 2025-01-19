@@ -86,7 +86,6 @@ public:
 
     virtual rubiksCube &b2() = 0;
 
-    // helper functions
     string getCornerColorString(uint8_t ind) const;
 
     uint8_t getCornerIndex(uint8_t ind) const;
