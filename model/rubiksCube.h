@@ -2,9 +2,10 @@
 
 using namespace std;
 
-class rubiksCubeGeneral {
+class rubiksCube {
+  
 public:
-    enum class FACE {
+    enum class FACE {     
         UP,
         LEFT,
         FRONT,
@@ -42,46 +43,46 @@ public:
     void print() const;
 
     vector<MOVE> randomShuffleCube(unsigned int times);
+  
+    rubiksCube &move(MOVE ind);
 
-    rubiksCubeGeneral &move(MOVE ind);
+    rubiksCube &invert(MOVE ind);
 
-    rubiksCubeGeneral &invert(MOVE ind);
+    virtual rubiksCube &f() = 0;
 
-    virtual rubiksCubeGeneral &f() = 0;
+    virtual rubiksCube &fPrime() = 0;
 
-    virtual rubiksCubeGeneral &fPrime() = 0;
+    virtual rubiksCube &f2() = 0;
 
-    virtual rubiksCubeGeneral &f2() = 0;
+    virtual rubiksCube &u() = 0;
 
-    virtual rubiksCubeGeneral &u() = 0;
+    virtual rubiksCube &uPrime() = 0;
 
-    virtual rubiksCubeGeneral &uPrime() = 0;
+    virtual rubiksCube &u2() = 0;
 
-    virtual rubiksCubeGeneral &u2() = 0;
+    virtual rubiksCube &l() = 0;
 
-    virtual rubiksCubeGeneral &l() = 0;
+    virtual rubiksCube &lPrime() = 0;
 
-    virtual rubiksCubeGeneral &lPrime() = 0;
+    virtual rubiksCube &l2() = 0;
 
-    virtual rubiksCubeGeneral &l2() = 0;
+    virtual rubiksCube &r() = 0;
 
-    virtual rubiksCubeGeneral &r() = 0;
+    virtual rubiksCube &d() = 0;
 
-    virtual rubiksCubeGeneral &d() = 0;
+    virtual rubiksCube &dPrime() = 0;
 
-    virtual rubiksCubeGeneral &dPrime() = 0;
+    virtual rubiksCube &d2() = 0;
 
-    virtual rubiksCubeGeneral &d2() = 0;
+    virtual rubiksCube &rPrime() = 0;
 
-    virtual rubiksCubeGeneral &rPrime() = 0;
+    virtual rubiksCube &r2() = 0;
 
-    virtual rubiksCubeGeneral &r2() = 0;
+    virtual rubiksCube &b() = 0;
 
-    virtual rubiksCubeGeneral &b() = 0;
+    virtual rubiksCube &bPrime() = 0;
 
-    virtual rubiksCubeGeneral &bPrime() = 0;
-
-    virtual rubiksCubeGeneral &b2() = 0;
+    virtual rubiksCube &b2() = 0;
 
     string getCornerColorString(uint8_t ind) const;
 
@@ -89,3 +90,4 @@ public:
 
     uint8_t getCornerOrientation(uint8_t ind) const;
 };
+

@@ -1,8 +1,9 @@
-#include "rubiksCubeGeneral.h"
+#include "rubiksCube.h"
+#include<bits/stdc++.h>
 #define space(x) for(int i = 0;i<x;i++)cout<<" ";
 #define line cout<<"\n"
 
-char rubiksCubeGeneral::getColorLetter(COLOR color){
+char rubiksCube::getColorLetter(COLOR color){
     switch(color){
         case COLOR::GREEN : return 'G';
         case COLOR::YELLOW : return 'Y';
@@ -13,7 +14,7 @@ char rubiksCubeGeneral::getColorLetter(COLOR color){
     }
 }
 
-string rubiksCubeGeneral::getMove(MOVE ind){
+string rubiksCube::getMove(MOVE ind){
     switch (ind) {
         case MOVE::L:
             return "L";
@@ -54,7 +55,7 @@ string rubiksCubeGeneral::getMove(MOVE ind){
     }
 }
 
-rubiksCubeGeneral &rubiksCubeGeneral::move(MOVE ind){
+rubiksCube &rubiksCube::move(MOVE ind){
     switch (ind) {
         case MOVE::L:
             return this->l();
@@ -95,7 +96,7 @@ rubiksCubeGeneral &rubiksCubeGeneral::move(MOVE ind){
     }
 }
 
-rubiksCubeGeneral &rubiksCubeGeneral::invert(MOVE ind){
+rubiksCube &rubiksCube::invert(MOVE ind){
     switch (ind) {
         case MOVE::L:
             return this->lPrime();
@@ -136,49 +137,49 @@ rubiksCubeGeneral &rubiksCubeGeneral::invert(MOVE ind){
     }
 }
 
-void rubiksCubeGeneral::print() const{
+// print rubiks cube
+
+void rubiksCube::print() const{
 
     cout<<"RUBIK'S CUBE : \n\n";
 
-    /*
-    face(f);
-    f1 : white,
-    f2 : green,
-    f3 : red,
-    f4 : blue,
-    f5 : orange,
-    f6 : yellow
-    */
-
     for(int i = 0;i<=8;i++){
+        if(i == 3 || i == 6)line;
         for(int j = 0;j<=11;j++){
+            if(j == 3 || j == 6 || j == 9)space(1);
             if(i>=0 && i<=2){
                 if(j>=3 && j<=5){
                     // UP face
                     cout<<getColorLetter(getColor(FACE::UP,i%3,j%3));
+                    space(1);
                 }else{
-                    space(1)
+                    space(2)
                 }
             }else if(i>=3 && i<=5){
                 if(j>=0 && j<=2){
                     // LEFT face
                     cout<<getColorLetter(getColor(FACE::LEFT,i%3,j%3));
+                    space(1);
                 }else if(j>=3 && j<=5){
                     // FRONT face
                     cout<<getColorLetter(getColor(FACE::FRONT,i%3,j%3));
+                    space(1);
                 }else if(j>=6 && j<=8){
                     // RIGHT face
                     cout<<getColorLetter(getColor(FACE::RIGHT,i%3,j%3));
+                    space(1);
                 }else if(j>=9 && j<=11){
                     // BACK face
                     cout<<getColorLetter(getColor(FACE::BACK,i%3,j%3));
+                    space(1);
                 }
             }else if(i>=6 && i<=8){
                 if(j>=3 && j<= 5){
                     // DOWN face
                     cout<<getColorLetter(getColor(FACE::DOWN,i%3,j%3));
-                }else{
                     space(1);
+                }else{
+                    space(2);
                 }
             }
         }
@@ -187,7 +188,7 @@ void rubiksCubeGeneral::print() const{
     line;
 }
 
-vector<rubiksCubeGeneral::MOVE> rubiksCubeGeneral::randomShuffleCube(unsigned int times){
+vector<rubiksCube::MOVE> rubiksCube::randomShuffleCube(unsigned int times){
     vector<MOVE> moves_performed;
     srand(time(0));
     for(unsigned int i = 0;i<times;i++){
@@ -198,7 +199,7 @@ vector<rubiksCubeGeneral::MOVE> rubiksCubeGeneral::randomShuffleCube(unsigned in
     return moves_performed;
 }
 
-string rubiksCubeGeneral::getCornerColorString(uint8_t ind) const {
+string rubiksCube::getCornerColorString(uint8_t ind) const {
     string str = "";
 
     switch (ind) {
@@ -254,7 +255,7 @@ string rubiksCubeGeneral::getCornerColorString(uint8_t ind) const {
     return str;
 }
 
-uint8_t rubiksCubeGeneral::getCornerIndex(uint8_t ind) const {
+uint8_t rubiksCube::getCornerIndex(uint8_t ind) const {
     string corner = getCornerColorString(ind);
 
     uint8_t ret = 0;
@@ -281,7 +282,7 @@ uint8_t rubiksCubeGeneral::getCornerIndex(uint8_t ind) const {
     return ret;
 }
 
-uint8_t rubiksCubeGeneral::getCornerOrientation(uint8_t ind) const {
+uint8_t rubiksCube::getCornerOrientation(uint8_t ind) const {
     string corner = getCornerColorString(ind);
 
     string actual_str = "";
