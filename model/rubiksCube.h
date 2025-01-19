@@ -3,8 +3,9 @@
 using namespace std;
 
 class rubiksCube {
+  
 public:
-    enum class FACE {
+    enum class FACE {     
         UP,
         LEFT,
         FRONT,
@@ -42,7 +43,7 @@ public:
     void print() const;
 
     vector<MOVE> randomShuffleCube(unsigned int times);
-
+  
     rubiksCube &move(MOVE ind);
 
     rubiksCube &invert(MOVE ind);
