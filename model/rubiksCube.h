@@ -1,6 +1,3 @@
-#ifndef RUBIKSCUBESOLVER_RUBIKSCUBE_H
-#define RUBIKSCUBESOLVER_RUBIKSCUBE_H
-
 #include "bits/stdc++.h"
 
 using namespace std;
@@ -93,4 +90,3 @@ public:
     uint8_t getCornerOrientation(uint8_t ind) const;
 };
 
-#endif
