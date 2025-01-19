@@ -141,16 +141,6 @@ void rubiksCube::print() const{
 
     cout<<"RUBIK'S CUBE : \n\n";
 
-    /*
-    face(f);
-    f1 : white,
-    f2 : green,
-    f3 : red,
-    f4 : blue,
-    f5 : orange,
-    f6 : yellow
-    */
-
     for(int i = 0;i<=8;i++){
         if(i == 3 || i == 6)line;
         for(int j = 0;j<=11;j++){
